@@ -716,6 +716,24 @@
     // This is kept in case you want to use modals later
   }
 </script>
+    <script>
+document.getElementById("contactForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const name = this.name.value;
+  const email = this.email.value;
+  const message = this.message.value;
+
+  const response = await fetch("https://backened-1-ergm.onrender.com", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name, email, message })
+  });
+
+  const result = await response.json();
+  alert(result.message || "Submitted!");
+});
+</script>
 
 
 
